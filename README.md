@@ -1,7 +1,7 @@
 # NASA API Mars Curiosity Images Retriever
 
 ## Static Analysis
-https://app.codacy.com/project/julianmpaul/MarsImages/dashboard
+[Codacy: Review Dashboard](https://app.codacy.com/project/julianmpaul/MarsImages/dashboard)
 
 ### Prerequisites:
 * maven - as of this writing mvn 3.6
