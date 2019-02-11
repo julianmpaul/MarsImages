@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Main Page</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+	</head>
+
+	<body>
+	  <hr/>
+	  <div class="container">
+	    <h4>Parameters</h4>
+	    <div class="row">
+	      <table class="table" style="width:50%">
+	        <tr>
+	          <td>
+	            <label>User API Key</label> <input id="apikey" type="text" class="input-sm spacing"/>
+	          </td>
+	          <td>
+	            <div class="input-group">
+	              <label class="input-group-btn">
+	                <span class="btn btn-sm btn-info">
+	                  Browse&hellip; <input type="file" id="dateinput" style="display: none;">
+	                </span>
+	              </label>
+	              <input type="text" id="labelFile" class="input-sm spacing" placeholder="Input File" readonly>
+	            </div>
+	          </td>
+	        </tr>
+	      </table>
+
+	      <button id="btnFetch" onclick="httpGetAsync('/exec', processCarousel)" class="btn btn-sm btn-info" disabled=true>Fetch Images</button>        
+	    </div>
+	    <div>
+	      <ul id="statusList">
+	      </ul>
+	    </div>
+
+	    <hr/>
+	  </div>
+	</body>
+	<script src="js/app/app.js"></script>
+</html>
