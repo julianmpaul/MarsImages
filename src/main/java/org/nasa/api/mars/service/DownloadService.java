@@ -40,7 +40,7 @@ public class DownloadService {
 	
 	@RequestMapping("/exec")
 	@Async
-	private DataImageSet exec(@RequestParam String dateParam, @RequestParam String apiKey) throws JSONException, ParseException, IOException 
+	public DataImageSet exec(@RequestParam String dateParam, @RequestParam String apiKey) throws JSONException, ParseException, IOException 
     {
 		//System.out.println(dateParam);
 		//simple date format is not thread safe. recreate every call
@@ -119,7 +119,7 @@ public class DownloadService {
     
     @RequestMapping("/dwnld")
 	@Async
-	private DataImageSet dwnld(@RequestParam String dateParam) throws JSONException, ParseException, IOException 
+	public DataImageSet dwnld(@RequestParam String dateParam) throws JSONException, ParseException, IOException 
     {
     	DataImageSet toDownload = null;
     	for(DataImageSet imageSet : listDataImage) {
