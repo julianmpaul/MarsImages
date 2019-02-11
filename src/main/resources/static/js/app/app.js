@@ -42,7 +42,7 @@ function httpPostAsync(theUrl, date, callback)
 
 function processCarousel(response) 
 {
-	var statusList = document.getElementById('statusList');
+  var statusList = document.getElementById('statusList');
 	
   var imgdata = JSON.parse(response);
   
@@ -200,36 +200,38 @@ function readFileSelect(evt)
       lines = e.target.result.split(/\r?\n/);
 
         lines.forEach(function (line) {
-        	var separators = ['\-', ', ', ',', '/', ' '];
-        	tokens = line.split(new RegExp(separators.join('|'), 'g'));
-        	date = new Date(line);
-        	if(!isNaN(date) && tokens.length > 2) {
-        		tokens.splice( tokens.indexOf(date.getFullYear().toString()), 1 );
+          if(line.trim()) {
+          	var separators = ['\-', ', ', ',', '/', ' '];
+          	tokens = line.split(new RegExp(separators.join('|'), 'g'));
+          	date = new Date(line);
+          	if(!isNaN(date) && tokens.length > 2) {
+          		tokens.splice( tokens.indexOf(date.getFullYear().toString()), 1 );
 
-        		if(tokens.indexOf(date.getDate().toString()) > -1) {
-        			var datestr = date.toDateString();
-              dates.push(datestr);
+          		if(tokens.indexOf(date.getDate().toString()) > -1) {
+          			var datestr = date.toDateString();
+                dates.push(datestr);
 
-              var statusElem = document.createElement("li");
-              statusElem.id = datestr;
-              statusElem.innerText = datestr + " valid earth date.";
+                var statusElem = document.createElement("li");
+                statusElem.id = datestr;
+                statusElem.innerText = datestr + " valid earth date.";
 
-              statusList.appendChild(statusElem);
-              document.getElementById('btnFetch').disabled = false;
-        		} else {
-              var statusElem = document.createElement("li");
+                statusList.appendChild(statusElem);
+                document.getElementById('btnFetch').disabled = false;
+          		} else {
+                var statusElem = document.createElement("li");
+                statusElem.id = line;
+                statusElem.innerText = line + " invalid date/date format";
+
+                statusList.appendChild(statusElem);
+              }
+          	} else {
+          		var statusElem = document.createElement("li");
               statusElem.id = line;
               statusElem.innerText = line + " invalid date/date format";
 
               statusList.appendChild(statusElem);
-            }
-        	} else {
-        		var statusElem = document.createElement("li");
-            statusElem.id = line;
-            statusElem.innerText = line + " invalid date/date format";
-
-            statusList.appendChild(statusElem);
-        	}
+          	}
+          }
         });
         console.log(dates);
     }
