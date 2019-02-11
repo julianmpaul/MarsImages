@@ -19,7 +19,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.nasa.api.mars.model.DataImageSet;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,7 +38,6 @@ public class DownloadService {
 	private final static String DEMO_KEY = "DEMO_KEY";
 	
 	@RequestMapping("/exec")
-	@Async
 	public DataImageSet exec(@RequestParam String dateParam, @RequestParam String apiKey) throws JSONException, ParseException, IOException 
     {
 		//System.out.println(dateParam);
@@ -118,7 +116,6 @@ public class DownloadService {
 	}
     
     @RequestMapping("/dwnld")
-	@Async
 	public DataImageSet dwnld(@RequestParam String dateParam) throws JSONException, ParseException, IOException 
     {
     	DataImageSet toDownload = null;
